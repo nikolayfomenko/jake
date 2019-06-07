@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style type="text/css">
+		.window{
+			height: 400px;
+			width:400px;
+			background-color: #42dcf4;
+			position: absolute;
+			top:-100%;
+			transition: 1s;
+			left:35%;
+		}
+		.window2{
+			height: 400px;
+			width:400px;
+			background-color: #42f448;
+			position: absolute;
+			top:-100%;
+			transition: 1s;
+			left:35%;
+		}
+	</style>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="game">
+		<h1 class="text-center">POINTS</h1>
+		<h1 class="points text-center">0</h1>
+		
+
+		<div class="container">
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog w-75" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="window">
+		<h1 class="text-center text-warning" style="font-size: 500%; margin-top: 90px;">Ты победил!!!</h1>
+	</div>
+	<div class="window2">
+		<h1 class="text-center text-primary" style="font-size: 500%; margin-top: 90px;">Ты проиграл(((</h1>
+	</div>
+
+
+	<script>
+	score=0;
+	let jakes = document.querySelectorAll(".jakethedog");
+	let kings = document.querySelectorAll(".iceking");
+
+	let wind=document.querySelector(".window");
+	let wind2=document.querySelector(".window2");
+
+	
+
+	
+
+	let x = function(){
+		let rand_j = Math.random()*8
+		let round_j = Math.round(rand_j);
+
+		jakes[round_j].style.display="block"
+		let xx =function(){
+			jakes[round_j].style.display="none"
+		}
+		setTimeout(xx,700);
+		jakes[round_j].onclick = function(){
+			jakes[round_j].style.display="none";
+			score=score+1;
+			document.querySelector(".points").innerHTML = score;
+		}
+		
+	}
+	let y = function(){
+		let rand_ik = Math.random()*8
+		let round_ik = Math.round(rand_ik)
+
+		kings[round_ik].style.display="block"
+		let yy =function(){
+			kings[round_ik].style.display="none"
+		}
+		setTimeout(yy,700);
+		kings[round_ik].onclick = function(){
+			kings[round_ik].style.display="none"
+			score=score-5;
+			document.querySelector(".points").innerHTML = score;
+		}
+		
+	}
+	let stopjake =setInterval(x,1000);
+	let stopIceking =setInterval(y,2000);
+	
+	let end=function(){
+	if ( score  >= 5  ) {
+			wind.style.top="10%"
+			clearInterval(stopjake);
+			clearInterval(stopIceking);
+		}
+	else {
+		wind2.style.top="10%"
+		clearInterval(stopjake);
+		clearInterval(stopIceking);
+
+	}	
+	}
+
+
+
+	
+	
+
+
+	setTimeout(end,10000);
+
+
+
+	</script>
+</body>
+</html>
